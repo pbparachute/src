@@ -7,6 +7,7 @@ public class Data {
 	public static int maple = 1307;
 	public static int yew = 1309;
 	public static int runeaxe = 1360;
+	public static int runeaxeinbank = 1360;
 	public static int ironaxe = 1350;
 	public static int [] axes = {1360, 1350};
 	public static int booth = 25808;

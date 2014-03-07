@@ -3,7 +3,6 @@ package methods;
 import org.parabot.environment.api.utils.Time;
 import org.parabot.environment.scripts.framework.Strategy;
 import org.soulsplit.api.methods.*;
-import org.soulsplit.api.wrappers.Item;
 import org.soulsplit.api.wrappers.SceneObject;
 
 import paracutter.Data;
@@ -16,9 +15,9 @@ public class CutMaple implements Strategy {
 	public boolean activate() {
 		if (Skill.WOODCUTTING.getRealLevel() < 60
 				&& Skill.WOODCUTTING.getRealLevel() >= 45
+				&& Inventory.getCount(Data.runeaxe) > 0
 				&& !Inventory.isFull()
-				&& Players.getMyPlayer().getAnimation() == -1
-				&& Inventory.getCount(Data.runeaxe) > 0) {
+				&& Players.getMyPlayer().getAnimation() == -1) {
 			if (SceneObjects.getNearest(Data.maple) != null) {
 				if (SceneObjects.getNearest(Data.maple).length > 0) {
 					for (SceneObject so : SceneObjects.getNearest(Data.maple)) {
@@ -37,7 +36,7 @@ public class CutMaple implements Strategy {
 	@Override
 	public void execute() {
 		if (maple != null) {
-			if (maple.distanceTo() > 5 && Inventory.getCount(Data.runeaxe) > 0) {
+			if (maple.distanceTo() > 5) {
 				maple.getLocation().walkTo();
 				while (Players.getMyPlayer().getAnimation() != -1) {
 					Time.sleep(150);

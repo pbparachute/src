@@ -11,12 +11,13 @@ import org.soulsplit.api.wrappers.SceneObject;
 import paracutter.Data;
 
 public class CutYew implements Strategy {
-private static SceneObject yew;
+	private static SceneObject yew;
+
 	@Override
 	public boolean activate() {
 		if (Skill.WOODCUTTING.getRealLevel() >= 60 && !Inventory.isFull()
 				&& Players.getMyPlayer().getAnimation() == -1
-				&& Inventory.getCount(Data.runeaxe) != 0) {
+				&& Inventory.getCount(Data.runeaxe) > 0) {
 			if (SceneObjects.getNearest(Data.yew) != null) {
 				if (SceneObjects.getNearest(Data.yew).length > 0) {
 					for (SceneObject so : SceneObjects.getNearest(Data.yew)) {
@@ -49,6 +50,4 @@ private static SceneObject yew;
 		}
 	}
 
-	}
-
-
+}
